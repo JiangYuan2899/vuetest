@@ -80,15 +80,16 @@
         </a>
       </li> 
     </ul>-->
+    
   </div>
 </template>
 
 <script>
 export default {
   name: 'HelloWorld',
-  data () {
+  data  () {
     return {
-      msg: ''
+      msg: '123'
     }
   }
 }
