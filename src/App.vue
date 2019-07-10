@@ -67,14 +67,13 @@
       <div class="box" v-bind:style="{'width':boxWidth+'PX'}">
       我是一个box  
       </div>
-        
       </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App',
+  name: "App",
   data  () {
     return {
       msg: '这是一个msg',
@@ -86,7 +85,7 @@ export default {
       h:'<h2>我是h2</h2>',
       flag:false,
       boxWidth:500,
-      list:['A','B','C'],
+      list:["A",'B','C'],
       list1:[
           {message:'A'},
           {message:'B'},
