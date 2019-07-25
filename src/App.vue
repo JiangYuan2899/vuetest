@@ -2,7 +2,7 @@
 
 	<div id='app'>
 	<br>
-	第七讲数组增加和删除
+	第七讲数组增加和删除+第八讲＋第九讲
 	<hr>
 	</hr>
 	</br>
@@ -16,7 +16,7 @@
 			<h2>进行中</h2>
 				<ul>
 					<li v-for='(item,key) in list' v-if='!item.checked'>
-					<input type="checkbox" v-model='item.checked'>	{{item.title}} -----<button @click='doDele(key)'>删除
+					<input type="checkbox" v-model='item.checked' @change='saveList()'>	{{item.title}} -----<button @click='doDele(key)'>删除
 					</button>
 					</li>
 				</ul>
@@ -41,21 +41,21 @@
 			ok:false,
 			todo:'',
 			list:[
-				{
-					title:'录制node.js',
-					checked:false,
+				// {
+				// 	title:'录制node.js',
+				// 	checked:false,
 
-				},
-				{
-					title:'录制react.js',
-					checked:true,
-				},
+				// },
+				// {
+				// 	title:'录制react.js',
+				// 	checked:true,
+				// },
 			]
 			}
 		},
 	methods:{
 		doAdd(e){
-			console.log(e.keyCode )
+			// console.log(e.keyCode)
 			if(e.keyCode==13){
 			// alert('增加');
 			//1、获取文本框输入的值 2、把文本框的值push到list里面
@@ -64,17 +64,28 @@
 					title:this.todo,
 					checked:false,
 				});
-			this.todo='';
+			// this.todo='';
 			}
-		},
+			localStorage.setiIem('key',JSON.stringify(this.list))
+		}, 
 		doDele(key){
 			//js里面 操作数组的方法
 			this.list.splice(key,1);
+			localStorage.setItem('key',JSON.stringify(this.list))
 		},
 		getlist(){
 			console.log(this.list)	
-		} 
-	}
+		},
+		saveList(){
+			localStorage.setItem('key',JSON.stringify(this.list))
+		}
+	},
+	mounted(){	/*生命周期函数 vue页面刷新就会触发方法*/
+			var list=JSON.parse(localStorage.getItem('list'));
+			if(list){
+				this.list=list;
+			}
+		}
 }
 
 </script>
