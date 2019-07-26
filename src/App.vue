@@ -85,7 +85,7 @@
 			if(list){
 				this.list=list;
 			}
-		}
+	}
 }
 
 </script>
