@@ -2,7 +2,8 @@
 
 	<div id='app'>
 	<br>
-	第七讲数组增加和删除+第八讲＋第九讲
+	<!--全局引用nodejs模块化，封装引用-->
+	第七讲数组增加和删除+第八讲＋第九讲(缓存功能刷新页面数据保存)
 	<hr>
 	</hr>
 	</br>
@@ -34,7 +35,7 @@
 </template>
 <script>
 
-
+import storage from './model/storage.js';
 	export default{
 		data(){
 			return {
@@ -66,22 +67,26 @@
 				});
 			// this.todo='';
 			}
-			localStorage.setiIem('key',JSON.stringify(this.list))
+			storage.set('list',this.list);
+			// localStorage.setItem('list',JSON.stringify(this.list))
 		}, 
 		doDele(key){
 			//js里面 操作数组的方法
 			this.list.splice(key,1);
-			localStorage.setItem('key',JSON.stringify(this.list))
+			storage.set('list',this.list);
+			// localStorage.setItem('list',JSON.stringify(this.list))
 		},
 		getlist(){
 			console.log(this.list)	
 		},
 		saveList(){
-			localStorage.setItem('key',JSON.stringify(this.list))
-		}
+			storage.set('list',this.list);
+			// localStorage.setItem('list',JSON.stringify(this.list))
+		} 
 	},
 	mounted(){	/*生命周期函数 vue页面刷新就会触发方法*/
-			var list=JSON.parse(localStorage.getItem('list'));
+			// var list=JSON.parse(localStorage.getItem('list'));
+			var list=storage.get('list');	
 			if(list){
 				this.list=list;
 			}
